@@ -9,7 +9,11 @@ function combineUsers(...args){
     combineObject.users = [...combinedObject.users, ...array];
   }
 
-  combinedObject.merge_date = new Date().toString('M/d/yyyy');
+  const today = new Date();
+  const m = today.getMonth() + 1;
+  const d = today.getDate();
+  const yyyy = today.getFullYear();
+  combinedObject.merge_date = m + '/' + d + '/' + yyyy;
 
   return combineObject;
 }
