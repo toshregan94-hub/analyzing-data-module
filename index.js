@@ -1,4 +1,4 @@
-const datejs = require('datejs');
+
 
 function combineUsers(...args){
   const combineObject = {
@@ -9,11 +9,12 @@ function combineUsers(...args){
     combineObject.users = [...combinedObject.users, ...array];
   }
 
-  combineObject.merge_date = new Date().toLocaleDateString('en-US',{
-    month: 'numeric',
-    day: 'numeric',
-    year:'numeric'
-  });
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+  const year = today.getFullYear();
+  combineObject.merge_date = `${month}/${day}/${year}`;
+
   return combineObject;
 }
 
@@ -21,5 +22,6 @@ function combineUsers(...args){
 module.exports = {
   ...(typeof combineUsers !== 'undefined' && { combineUsers })
 };
+
 
 
